@@ -395,7 +395,7 @@ class _MyChallengesSection extends StatelessWidget {
                   child: Column(
                     children: [
                       Icon(Icons.add_circle_outline,
-                          size: 40, color: AppColors.textMuted),
+                          size: 40, color: Theme.of(context).textTheme.bodySmall?.color),
                       const SizedBox(height: 8),
                       Text(
                         'Your personal challenges appear here',

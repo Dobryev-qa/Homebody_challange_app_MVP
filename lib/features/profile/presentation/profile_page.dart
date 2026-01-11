@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import '../data/profile_stats_service.dart';
 import '../domain/profile_stats.dart';
 import '../../../core/constants/user_local_storage.dart';
-import '../../../core/theme/theme_notifier.dart';
-import '../../../core/theme/theme_local_storage.dart';
-import '../../../core/theme/app_theme_mode.dart';
 import '../../../core/theme/app_components.dart';
 import '../../../core/theme/app_theme.dart';
 
@@ -84,7 +81,7 @@ class ProfilePage extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                // Appearance section
+                // Appearance section - placeholder for future version
                 AppCard(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,18 +94,9 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16),
-
-                      _ThemeOption(
-                        title: 'System',
-                        value: AppThemeMode.system,
-                      ),
-                      _ThemeOption(
-                        title: 'Light',
-                        value: AppThemeMode.light,
-                      ),
-                      _ThemeOption(
-                        title: 'Dark',
-                        value: AppThemeMode.dark,
+                      Text(
+                        'Theme selection will be added in a future version',
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   ),
@@ -183,40 +171,6 @@ class _StatCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _ThemeOption extends StatelessWidget {
-  final String title;
-  final AppThemeMode value;
-
-  const _ThemeOption({
-    required this.title,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder<AppThemeMode>(
-      valueListenable: themeModeNotifier,
-      builder: (_, current, __) {
-        final selected = current == value;
-
-        return ListTile(
-          title: Text(
-            title,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          trailing: selected
-              ? const Icon(Icons.check, color: AppColors.primary)
-              : null,
-          onTap: () async {
-            themeModeNotifier.value = value;
-            await ThemeLocalStorage().save(value);
-          },
-        );
-      },
     );
   }
 }

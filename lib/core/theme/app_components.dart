@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
-import 'app_theme_light.dart';
 
 class AppCard extends StatelessWidget {
   final Widget child;
@@ -20,17 +19,13 @@ class AppCard extends StatelessWidget {
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? AppColors.border
-              : AppColorsLight.border,
+          color: Colors.white.withOpacity(0.1),
         ),
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.6)
-                : Colors.black.withOpacity(0.06),
-            blurRadius: Theme.of(context).brightness == Brightness.dark ? 20 : 24,
-            offset: Offset(0, Theme.of(context).brightness == Brightness.dark ? 10 : 12),
+            color: Colors.black.withOpacity(0.6),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
           ),
         ],
       ),
@@ -50,7 +45,7 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 14),
         shape: RoundedRectangleBorder(
@@ -73,13 +68,9 @@ class SecondaryButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: onTap,
       style: OutlinedButton.styleFrom(
-        foregroundColor: Theme.of(context).brightness == Brightness.dark 
-            ? AppColors.textSecondary 
-            : AppColorsLight.textSecondary,
+        foregroundColor: Theme.of(context).textTheme.bodyMedium?.color,
         side: BorderSide(
-          color: Theme.of(context).brightness == Brightness.dark 
-              ? AppColors.border 
-              : AppColorsLight.border,
+          color: Colors.white.withOpacity(0.1),
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),

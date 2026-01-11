@@ -1,50 +1,49 @@
 import 'package:flutter/material.dart';
 
-class AppColors {
-  static const background = Color(0xFF0B0B0C);
-  static const surface = Color(0xFF141416);
-  static const surfaceSoft = Color(0xFF1A1A1D);
+class AppTheme {
+  static ThemeData get darkTheme => ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF0B0B0C),
+        primaryColor: const Color(0xFFE53935),
 
-  static const primary = Color(0xFFE53935); // красный
-  static const primarySoft = Color(0x33E53935);
+        cardColor: const Color(0xFF1A1A1D),
 
-  static const textPrimary = Color(0xFFFFFFFF);
-  static const textSecondary = Color(0xFF9E9E9E);
-  static const textMuted = Color(0xFF6E6E73);
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: Colors.white,
+        ),
 
-  static const border = Color(0x22FFFFFF);
-}
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 14,
+            color: Colors.white70,
+          ),
+          bodySmall: TextStyle(
+            fontSize: 12,
+            color: Colors.grey,
+          ),
+        ),
 
-// Типография
-class AppTextStyles {
-  static const titleXL = TextStyle(
-    fontSize: 28,
-    fontWeight: FontWeight.w800,
-    letterSpacing: 1.2,
-    color: AppColors.textPrimary,
-  );
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color(0xFF141416),
+          selectedItemColor: Color(0xFFE53935),
+          unselectedItemColor: Colors.grey,
+        ),
 
-  static const titleL = TextStyle(
-    fontSize: 22,
-    fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
-  );
-
-  static const titleM = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
-  );
-
-  static const body = TextStyle(
-    fontSize: 14,
-    color: AppColors.textSecondary,
-    height: 1.4,
-  );
-
-  static const caption = TextStyle(
-    fontSize: 12,
-    color: AppColors.textMuted,
-    letterSpacing: 1.1,
-  );
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFE53935),
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+        ),
+      );
 }
